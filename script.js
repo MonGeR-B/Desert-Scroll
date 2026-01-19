@@ -165,5 +165,61 @@ document.addEventListener("DOMContentLoaded", () => {
             render();
             ScrollTrigger.refresh();
         });
+
+        // Marquee horizontal scroll - initialized AFTER hero section setup
+        const marqueeImages = document.querySelector(".marquee-images");
+        
+        if (marqueeImages) {
+            const getScrollAmount = () => {
+                const marqueeWidth = marqueeImages.scrollWidth;
+                const viewportWidth = window.innerWidth;
+                return -(marqueeWidth - viewportWidth);
+            };
+
+            ScrollTrigger.create({
+                trigger: ".marquee",
+                start: "center center",
+                end: () => `+=${marqueeImages.scrollWidth * 1.5}`,
+                pin: true,
+                scrub: 1,
+                invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                    const progress = self.progress;
+                    
+                    // Start from -50% (CSS initial) and move to full getScrollAmount
+                    const scrollProgress = progress;
+                    const initialOffset = -window.innerWidth * 0.5; // -50% of viewport
+                    const totalScroll = getScrollAmount() - initialOffset;
+                    const scrollDistance = initialOffset + (totalScroll * scrollProgress);
+                    
+                    gsap.set(marqueeImages, {
+                        x: scrollDistance
+                    });
+                },
+            });
+        }
+
+        // Horizontal Scroll Section Animation
+        const horizontalSection = document.querySelector(".horizontal-scroll");
+        const horizontalWrapper = document.querySelector(".horizontal-scroll-wrapper");
+
+        if (horizontalSection && horizontalWrapper) {
+            const getScrollAmount = () => {
+                return -(horizontalWrapper.scrollWidth - window.innerWidth);
+            };
+
+            gsap.to(horizontalWrapper, {
+                x: getScrollAmount,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".horizontal-scroll",
+                    start: "top top",
+                    end: () => `+=${horizontalWrapper.scrollWidth - window.innerWidth}`,
+                    pin: true,
+                    scrub: 1,
+                    invalidateOnRefresh: true,
+                },
+            });
+        }
     };
 });
