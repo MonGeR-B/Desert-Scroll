@@ -1,0 +1,427 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400;1,500&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap");
+
+:root {
+    --fg: #241910;
+    --bg: #fefbf4;
+    --light: #edf1e8;
+    --dark: #101010;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "DM Mono", monospace;
+    background-color: var(--bg);
+    color: var(--fg);
+}
+
+img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+h1 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+p {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: inherit;
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+}
+
+.btn.primary {
+    background-color: var(--fg);
+    color: var(--bg);
+}
+
+.btn.secondary {
+    border: 1px solid var(--fg);
+    background-color: transparent;
+    color: var(--fg);
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    will-change: opacity;
+    z-index: 2;
+}
+
+nav>div {
+    flex: 1;
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 3rem;
+}
+
+nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav .logo img {
+    width: 9rem;
+    height: auto;
+}
+
+nav .logo a {
+    text-transform: none;
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.5rem;
+}
+
+nav .nav-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: flex-end;
+}
+
+.hero {
+    position: relative;
+    width: 100vw;
+    height: 100svh;
+    overflow: hidden;
+}
+
+/* Changed to class selector for better practice, or use as custom element */
+.outro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    background-color: var(--bg);
+    color: var(--fg);
+    height: 40rem;
+}
+
+.outro-2 {
+    height: 40rem;
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    padding: 0.5rem 0;
+}
+
+.header {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    color: var(--fg);
+    transform-origin: center;
+    /* FIXED: transform-prigin to transform-origin */
+    will-change: transform, opacity;
+    margin-top: 3rem;
+}
+
+.header h1 {
+    width: 50%;
+    margin-bottom: 0.5rem;
+}
+
+.header p {
+    opacity: 0.35;
+}
+
+.client-logos {
+    width: 30%;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.client-logos .client-logo {
+    flex: 1;
+}
+
+.client-logos .client-logo img {
+    object-fit: contain;
+}
+
+.hero-img-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    /* Increased from 50% */
+    height: 60vh;
+    /* Added explicit height */
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    /* Increased from 100px */
+    pointer-events: none;
+}
+
+.hero-img {
+    position: relative;
+    /* Changed from absolute */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* REMOVED: transform: translateZ(-100px); */
+    /* REMOVED: opacity: 0; */
+    will-change: transform, opacity;
+}
+
+.hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Changed from cover to contain */
+    border-radius: 12px;
+    /* Optional: adds rounded corners */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    /* Optional: adds shadow */
+}
+
+/* Marquee Section */
+
+.hero-2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-2 h2 {
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: -0.075rem;
+    line-height: 1.125;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.horizontal-scroll h3 {
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: -0.025rem;
+    line-height: 1.125;
+}
+
+.outro-2 h2 {
+    font-size: 4rem;
+    font-weight: 500;
+    letter-spacing: -0.075rem;
+    line-height: 1.125;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--light);
+    will-change: background-color;
+}
+
+.hero-2,
+.outro-2 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+    align-content: center;
+    text-align: center;
+}
+
+.outro-2 {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.marquee {
+    position: relative;
+    width: 100%;
+    height: 50svh;
+    overflow: hidden;
+}
+
+.marquee-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    width: 150%;
+    height: 100%;
+}
+
+.marquee-images {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-75%, -50%);
+    width: 200%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    will-change: transform;
+}
+
+.marquee-img {
+    flex-shrink: 0;
+    width: 25vw;
+    aspect-ratio: 5/3;
+}
+
+.horizontal-scroll {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+}
+
+.horizontal-scroll-wrapper {
+    position: relative;
+    width: 300%;
+    height: 100svh;
+    display: flex;
+    will-change: transform;
+}
+
+.horizontal-slide {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.horizontal-slide:not(.horizontal-spacer) {
+    background-color: var(--dark);
+    color: var(--light);
+}
+
+.horizontal-slide .col:nth-child(1) {
+    flex: 3;
+}
+
+.horizontal-slide .col:nth-child(2) {
+    flex: 2;
+}
+
+.horizontal-scroll .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.horizontal-slide .col h3,
+.horizontal-slide .col img {
+    width: 75%;
+}
+
+.horizontal-slide .col img {
+    height: 75%;
+}
+
+@media (max-width: 1000px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    nav .nav-links,
+    nav .nav-buttons {
+        display: none;
+    }
+
+    .header h1,
+    .client-logos,
+    .hero-img-container {
+        width: calc(100% - 4rem);
+    }
+
+    /* Marquee Section */
+
+    .hero-2 h2 {
+        font-size: 2.25rem;
+        width: 100%;
+    }
+
+    .outro-2 h2 {
+        font-size: 2.25rem;
+        width: 100%;
+    }
+
+    .horizontal-scroll h3 {
+        font-size: 1.5rem;
+    }
+
+    .marquee-wrapper {
+        width: 300%;
+    }
+
+    .horizontal-slide {
+        padding: 4rem;
+        flex-direction: column-reverse;
+        gap: 2rem;
+    }
+
+    .horizontal-slide .col:nth-child(1) {
+        align-items: flex-start;
+    }
+
+    .horizontal-slide .col h3 {
+        width: 100%;
+    }
+
+    .horizontal-slide .col img {
+        width: 100%;
+        height: 100%;
+    }
+}
