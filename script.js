@@ -178,8 +178,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             ScrollTrigger.create({
                 trigger: ".marquee",
-                start: "center center",
-                end: () => `+=${marqueeImages.scrollWidth * 1.5}`,
+                start: "top top",
+                end: "+=2000", /* Scroll distance for animation duration */
                 pin: true,
                 scrub: 1,
                 invalidateOnRefresh: true,

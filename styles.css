@@ -286,44 +286,78 @@ canvas {
 .marquee {
     position: relative;
     width: 100%;
-    height: 50svh;
+    height: 100svh;
     overflow: hidden;
-}
-
-.marquee-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    color: var(--fg);
+    background-color: var(--light);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2rem 0;
+    align-items: center;
+    padding: 1rem 0;
+    gap: 2rem;
 }
 
+.marquee-content {
+    display: none;
+}
+
+/* New Internal Text positioning */
 .marquee-text-top,
-.marquee-text-middle,
 .marquee-text-bottom {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 20%;
+    text-align: left;
+    /* Aligned left for grid columns */
+    z-index: 20;
+    color: var(--light);
+    background: #000;
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    /* Space out the two columns */
+    align-items: center;
+    gap: 2rem;
 }
 
-.marquee-content h2 {
-    font-size: 2rem;
-    font-weight: 400;
+.marquee-text-top .col,
+.marquee-text-bottom .col {
+    flex: 1;
+}
+
+.marquee-text-top h3,
+.marquee-text-bottom h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
     line-height: 1.2;
     margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.marquee-content p {
+.marquee-text-top p,
+.marquee-text-bottom p {
     font-size: 0.9rem;
-    line-height: 1.6;
-    text-transform: none;
+    line-height: 1.5;
     opacity: 0.7;
+    max-width: 90%;
+}
+
+.marquee-wrapper {
+    position: relative;
+    width: 150%;
+    height: 35%;
+    /* Fixed height constraint */
+    flex-shrink: 0;
+    z-index: 10;
+    /* Horizontally centered */
+    left: 50%;
+    /* Still needed because width > 100% */
+    transform: translateX(-50%);
+    top: auto;
+    margin: 0;
 }
 
 .marquee-text {
@@ -339,9 +373,7 @@ canvas {
     margin-top: -50svh;
 }
 
-.marquee-text-top,
-.marquee-text-middle,
-.marquee-text-bottom {
+.marquee-text-middle {
     width: 80%;
     max-width: 800px;
     margin: 0 auto;
