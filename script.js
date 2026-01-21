@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nav = document.querySelector("nav");
     const header = document.querySelector(".header");
-    const heroImg = document.querySelector(".hero-img");
+    const heroImg = document.querySelector(".hero-cards");
     const canvas = document.querySelector("canvas");
     const context = canvas.getContext("2d");
 
@@ -156,6 +156,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
+                // Tooltip Animation Logic (Appears BEFORE hero, fades out as hero fades in)
+                const tooltipsContent = document.querySelector(".tooltips-content");
+                if (tooltipsContent) {
+                    if (progress < 0.2) {
+                        // Hidden before 20%
+                        gsap.set(tooltipsContent, {
+                            opacity: 0,
+                        });
+                    } else if (progress >= 0.2 && progress < 0.5) {
+                        // Fade in from 20% to 50%
+                        const fadeInProgress = (progress - 0.2) / 0.3;
+                        gsap.set(tooltipsContent, {
+                            opacity: fadeInProgress,
+                        });
+                    } else if (progress >= 0.5 && progress < 0.8) {
+                        // Fade out from 50% to 80% (as hero fades in from 60% to 80%)
+                        const fadeOutProgress = (progress - 0.5) / 0.3;
+                        gsap.set(tooltipsContent, {
+                            opacity: 1 - fadeOutProgress,
+                        });
+                    } else {
+                        // Fully hidden after 80%
+                        gsap.set(tooltipsContent, {
+                            opacity: 0,
+                        });
+                    }
+                }
             
             },
         });
@@ -221,5 +248,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
             });
         }
+
+        // FAQ Toggle Logic
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const card = question.parentElement;
+                // Optional: Close others
+                // document.querySelectorAll('.faq-card').forEach(c => {
+                //     if (c !== card) c.classList.remove('active');
+                // });
+                card.classList.toggle('active');
+            });
+        });
     };
 });

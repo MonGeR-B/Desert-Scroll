@@ -27,14 +27,14 @@ img {
 
 h1 {
     font-family: "Host Grotesk", sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 400;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
 p {
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 500;
 }
 
@@ -115,17 +115,254 @@ nav .nav-buttons {
     overflow: hidden;
 }
 
-/* Changed to class selector for better practice, or use as custom element */
+/* Outro Section - 3 Column Layout */
 .outro {
+    padding: 6rem 3rem;
+    background-color: var(--bg);
+    color: var(--fg);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.outro-container {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem;
+    align-items: start;
+}
+
+.outro-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.outro-column h2 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin: 0 0 1rem 0;
+    color: var(--dark);
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1rem;
+}
+
+/* Left Column: Why Trebound */
+.why-points {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.why-point {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.why-icon {
+    font-size: 1.2rem;
+    color: var(--bg);
+    font-weight: 800;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dark);
+    border-radius: 50%;
+}
+
+.why-content h4 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: var(--dark);
+}
+
+.why-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    text-transform: none;
+}
+
+/* Middle Column: Group Size Cards */
+.size-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.size-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.size-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.size-card h3 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin: 0 0 0.75rem 0;
+    color: var(--dark);
+}
+
+.size-activities {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+    opacity: 0.8;
+    text-transform: none;
+    font-style: italic;
+}
+
+.size-ideal,
+.size-planning {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0 0 0.25rem 0;
+    opacity: 0.7;
+    text-transform: none;
+    display: block;
+}
+
+/* Right Column: Objective Cards */
+.objective-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.objective-card {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--dark);
+    transition: background 0.2s ease;
+}
+
+.objective-card:hover {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.objective-card h4 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0 0 0.25rem 0;
+    color: var(--dark);
+}
+
+.objective-desc {
+    font-size: 0.85rem;
+    margin: 0 0 0.5rem 0;
+    opacity: 0.7;
+    text-transform: none;
+}
+
+.objective-activities {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.9;
+    text-transform: none;
+    font-weight: 500;
+}
+
+
+.tooltips-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60vh;
+    transform-style: preserve-3d;
+    perspective: 2000px;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.tooltips-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    padding: 2rem;
-    background-color: var(--bg);
-    color: var(--fg);
-    height: 40rem;
+    will-change: transform, opacity;
 }
+
+
+.tooltip {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 420px;
+    color: var(--dark);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    will-change: transform, opacity;
+
+    /* Enhanced visibility */
+    background: rgba(254, 251, 244, 0.92);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.12),
+        0 8px 48px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.tooltip.left {
+    left: -15%;
+    text-align: left;
+}
+
+.tooltip.right {
+    right: -15%;
+    text-align: right;
+}
+
+.tooltip h2 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.tooltip p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    text-transform: none;
+    line-height: 1.6;
+    color: var(--dark);
+    font-weight: 400;
+}
+
 
 .outro-2 {
     height: 40rem;
@@ -156,22 +393,38 @@ canvas {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1rem;
     text-align: center;
     color: var(--fg);
     transform-origin: center;
     /* FIXED: transform-prigin to transform-origin */
     will-change: transform, opacity;
-    margin-top: 3rem;
+    margin-top: 6rem;
 }
 
 .header h1 {
-    width: 50%;
-    margin-bottom: 0.5rem;
+    width: 65%;
+    margin-bottom: 0.75rem;
 }
 
-.header p {
-    opacity: 0.35;
+/* First p: Description */
+.header p:nth-of-type(1) {
+    text-transform: none;
+    font-size: 0.95rem;
+    opacity: 0.6;
+    line-height: 1.6;
+    max-width: 65%;
+    font-weight: 400;
+}
+
+/* Second p: Features list */
+.header p:nth-of-type(2) {
+    font-size: 0.85rem;
+    opacity: 0.5;
+    letter-spacing: 0.5px;
+    max-width: 75%;
+    font-weight: 500;
+    line-height: 1.5;
 }
 
 .client-logos {
@@ -193,38 +446,160 @@ canvas {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
-    /* Increased from 50% */
-    height: 60vh;
-    /* Added explicit height */
+    width: 80%;
+    /* Increased for wider cards */
+    height: 85vh;
+    /* Increased to fill viewport */
     transform-style: preserve-3d;
     perspective: 2000px;
     /* Increased from 100px */
     pointer-events: none;
 }
 
-.hero-img {
+.hero-cards {
     position: relative;
-    /* Changed from absolute */
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* REMOVED: transform: translateZ(-100px); */
-    /* REMOVED: opacity: 0; */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 2.5rem;
+    padding: 0.5rem;
     will-change: transform, opacity;
+
+    /* Initial hidden state for animation */
+    opacity: 0;
+    transform: translateZ(-1000px);
 }
 
-.hero-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    /* Changed from cover to contain */
-    border-radius: 12px;
-    /* Optional: adds rounded corners */
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    /* Optional: adds shadow */
+.cards-heading {
+    position: absolute;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-align: center;
+    letter-spacing: 2px;
+    z-index: 10;
+    margin: 0;
+    padding: .3rem 2rem;
+    white-space: nowrap;
+    text-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.card {
+    background: rgba(254, 251, 244, 0.95);
+    padding: 1.75rem;
+    border-radius: 16px;
+    box-shadow:
+        0 4px 24px rgba(0, 0, 0, 0.1),
+        0 8px 48px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.14),
+        0 12px 64px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--dark);
+    margin: 0;
+}
+
+.card h4 {
+    font-family: "DM Mono", monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--dark);
+    opacity: 0.6;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-activities {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin: 0.25rem 0;
+}
+
+.card-activities span {
+    font-size: 0.8rem;
+    color: var(--dark);
+    opacity: 0.75;
+    text-transform: none;
+    font-weight: 400;
+    position: relative;
+    padding-left: 1rem;
+}
+
+.card-activities span::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--dark);
+    opacity: 1;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.card-best-for {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--dark);
+    opacity: 0.7;
+    text-transform: none;
+    margin: 0.5rem 0 0 0;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.card-link {
+    font-family: "DM Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 0.5rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.card-link:hover {
+    opacity: 0.7;
+    transform: translateX(4px);
+}
+
+.card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--dark);
+    opacity: 0.8;
+    text-transform: none;
+    margin: 0;
+    font-weight: 400;
 }
 
 /* Marquee Section */
@@ -302,47 +677,56 @@ canvas {
 }
 
 /* New Internal Text positioning */
-.marquee-text-top,
-.marquee-text-bottom {
+.marquee-text-top {
     position: relative;
     top: auto;
     left: auto;
     transform: none;
-    width: 20%;
+    width: 30%;
+    /* Reduced from 60% by 50% */
+    margin: 0 auto;
     text-align: left;
-    /* Aligned left for grid columns */
     z-index: 20;
-    color: var(--light);
-    background: #000;
     flex: 1;
     display: flex;
-    justify-content: space-between;
-    /* Space out the two columns */
-    align-items: center;
+    flex-direction: column;
+    /* Vertically stacked */
+    justify-content: center;
+    align-items: stretch;
     gap: 2rem;
 }
 
 .marquee-text-top .col,
 .marquee-text-bottom .col {
     flex: 1;
+    background: #111;
+    /* Distinct card background */
+    color: #fff;
+    padding: 2.5rem;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .marquee-text-top h3,
 .marquee-text-bottom h3 {
+    font-family: "DM Mono", monospace;
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.2;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #fff;
 }
 
 .marquee-text-top p,
 .marquee-text-bottom p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    opacity: 0.7;
-    max-width: 90%;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    max-width: 100%;
 }
 
 .marquee-wrapper {
@@ -461,7 +845,9 @@ canvas {
     flex-shrink: 0;
 }
 
-.horizontal-slide .col {
+.horizontal-slide .col,
+.horizontal-slide .col-1,
+.horizontal-slide .col-2 {
     flex: 1;
 }
 
@@ -555,4 +941,231 @@ canvas {
         width: 100%;
         height: 100%;
     }
+}
+
+/* Horizontal Scroll Content Styles */
+.content-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 4rem;
+    /* Increased padding */
+    gap: 1.5rem;
+}
+
+.content-col h2 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+/* Industries Grid */
+.industries-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.ind-item {
+    font-size: 1rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.ind-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.ind-item span {
+    font-size: 1.25rem;
+}
+
+.ind-subtitle {
+    font-size: 0.95rem;
+    font-style: italic;
+    opacity: 0.7;
+    margin: 0;
+}
+
+.ind-link {
+    font-family: "DM Mono", monospace;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    display: inline-block;
+}
+
+/* Related Services Cards */
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.svc-card {
+    background: rgba(255, 255, 255, 0.6);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--dark);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.svc-card:hover {
+    transform: translateX(4px);
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.svc-card h4 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.svc-card p {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.svc-card a {
+    font-family: "DM Mono", monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+}
+
+.svc-card a:hover {
+    opacity: 1;
+}
+
+/* FAQ Section Styles */
+.faq {
+    background-color: #fff;
+    padding: 6rem 2rem;
+    color: var(--dark);
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq h2 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.faq-card {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 1.5rem;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    cursor: pointer;
+    gap: 1.5rem;
+}
+
+.faq-question h3 {
+    font-family: "Host Grotesk", sans-serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.faq-card.active .faq-icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, margin-top 0.3s ease;
+}
+
+.faq-card.active .faq-answer {
+    max-height: 500px;
+    /* Arbitrary large enough height */
+    margin-top: 1rem;
+}
+
+.faq-answer p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin: 0;
+    max-width: 90%;
+}
+
+.faq-link {
+    display: inline-block;
+    margin-top: 3rem;
+    font-family: "DM Mono", monospace;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--dark);
+    text-decoration: none;
+    border-bottom: 1px solid var(--dark);
+    padding-bottom: 0.25rem;
+}
+
+/* Footer & Outro-2 Updates */
+.site-footer {
+    background-color: #000;
+    color: #fff;
+    width: 100%;
+}
+
+/* Override/Adjust existing outro-2 if needed to fit footer context */
+.site-footer .outro-2 {
+    background-color: #000;
+    /* Ensure it stays black */
+    color: #fff;
+    min-height: 50vh;
+    /* Adjust height if necessary */
 }
