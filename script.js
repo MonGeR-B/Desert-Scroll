@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const nav = document.querySelector("nav");
     const header = document.querySelector(".header");
-    const heroImg = document.querySelector(".hero-cards");
+    const heroImg = document.querySelector(".quote-card");
     const canvas = document.querySelector("canvas");
     const context = canvas.getContext("2d");
 
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const frameCount = 249;
     const currentFrame = (index) =>
-        `./Frames/frame_${(index + 90000).toString().padStart(5, "0")}.jpg`;
+        `https://ik.imagekit.io/vlries1el/trebound/frame%209000/frame_${(index + 9000001).toString()}.jpg?updatedAt=1769514934183`;
 
     let image = [];
     let videoFrames = { frame: 0 };
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ScrollTrigger.create({
             trigger: ".hero",
             start: "top top",
-            end: `+=${window.innerHeight * 7}px`,
+            end: `+=${frameCount * 10}px`,
             pin: true,
             pinSpacing: true,
             scrub: 1,
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (progress < 0.6) {
                     gsap.set(heroImg, {
-                        transform: "translateZ(-1000px)",
+                        transform: "translate(-50%, -50%) translateZ(-1000px)",
                         opacity: 0,
                     });
                 } else if (progress >= 0.6 && progress <= 0.9) {
@@ -145,14 +145,55 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     gsap.set(heroImg, {
-                        transform: `translateZ(${translateZ}px)`,
+                        transform: `translate(-50%, -50%) translateZ(${translateZ}px)`,
                         opacity,
                     });
                 } else {
                     gsap.set(heroImg, {
-                        transform: "translateZ(0px)",
+                        transform: "translate(-50%, -50%) translateZ(0px)",
                         opacity: 1,
                     });
+                }
+
+                // Stats Section Animation Logic (Appears 20%-60%)
+                const statsSection = document.querySelector(".stats-section");
+                if (statsSection) {
+                    if (progress < 0.2) {
+                        gsap.set(statsSection, {
+                            transform: "translate(-50%, -50%) translateZ(-1000px)",
+                            opacity: 0
+                        });
+                    } else if (progress >= 0.2 && progress < 0.3) {
+                         // Fade In & Move Forward
+                        const statsProgress = (progress - 0.2) / 0.1;
+                        const translateZ = -1000 + (statsProgress * 1000); // -1000 to 0
+                        
+                        gsap.set(statsSection, {
+                            transform: `translate(-50%, -50%) translateZ(${translateZ}px)`,
+                            opacity: statsProgress
+                        });
+                    } else if (progress >= 0.3 && progress <= 0.5) {
+                         // Stay Visible
+                        gsap.set(statsSection, {
+                            transform: "translate(-50%, -50%) translateZ(0px)",
+                            opacity: 1
+                        });
+                    } else if (progress > 0.5 && progress < 0.6) {
+                         // Fade Out
+                        const fadeOutProgress = (progress - 0.5) / 0.1;
+                        const opacity = 1 - fadeOutProgress;
+                        
+                        gsap.set(statsSection, {
+                             transform: "translate(-50%, -50%) translateZ(0px)",
+                             opacity: opacity
+                        });
+                    } else {
+                        // Hidden
+                        gsap.set(statsSection, {
+                            transform: "translate(-50%, -50%) translateZ(-1000px)",
+                            opacity: 0
+                        });
+                    }
                 }
 
 
@@ -227,27 +268,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Horizontal Scroll Section Animation
-        const horizontalSection = document.querySelector(".horizontal-scroll");
-        const horizontalWrapper = document.querySelector(".horizontal-scroll-wrapper");
+        const horizontalSections = document.querySelectorAll(".horizontal-scroll");
+        horizontalSections.forEach((horizontalSection) => {
+            const horizontalWrapper = horizontalSection.querySelector(".horizontal-scroll-wrapper");
 
-        if (horizontalSection && horizontalWrapper) {
-            const getScrollAmount = () => {
-                return -(horizontalWrapper.scrollWidth - window.innerWidth);
-            };
+            if (horizontalWrapper) {
+                const getScrollAmount = () => {
+                    return -(horizontalWrapper.scrollWidth - window.innerWidth);
+                };
 
-            gsap.to(horizontalWrapper, {
-                x: getScrollAmount,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: ".horizontal-scroll",
-                    start: "top top",
-                    end: () => `+=${horizontalWrapper.scrollWidth - window.innerWidth}`,
-                    pin: true,
-                    scrub: 1,
-                    invalidateOnRefresh: true,
-                },
-            });
-        }
+                gsap.to(horizontalWrapper, {
+                    x: getScrollAmount,
+                    ease: "none",
+                    scrollTrigger: {
+                        trigger: horizontalSection,
+                        start: "top top",
+                        end: () => `+=${horizontalWrapper.scrollWidth - window.innerWidth}`,
+                        pin: true,
+                        scrub: 1,
+                        invalidateOnRefresh: true,
+                    },
+                });
+            }
+        });
 
         // FAQ Toggle Logic
         const faqQuestions = document.querySelectorAll('.faq-question');
