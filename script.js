@@ -29,9 +29,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setCanvasSize();
 
-    const frameCount = 249;
+    const frameCount = 240;
     const currentFrame = (index) =>
-        `https://ik.imagekit.io/vlries1el/trebound/frame%209000/frame_${(index + 9000001).toString()}.jpg?updatedAt=1769514934183`;
+        `https://ik.imagekit.io/vlries1el/trebound/frame%20dubai/frame_${(index + 9000000000).toString()}.jpg`;
 
     let image = [];
     let videoFrames = { frame: 0 };
