@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const frameCount = 240;
     const currentFrame = (index) =>
-        `https://ik.imagekit.io/vlries1el/trebound/frame%20dubai/frame_${(index + 9000000000).toString()}.jpg`;
+        `https://ik.imagekit.io/vlries1el/trebound/frame%20dubai%202/frame_${(index + 9000000000000).toString()}.jpg`;
 
     let image = [];
     let videoFrames = { frame: 0 };
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (progress < 0.6) {
                     gsap.set(heroImg, {
-                        transform: "translate(-50%, -50%) translateZ(-1000px)",
+                        transform: "translate(0, -50%) translateZ(-1000px)",
                         opacity: 0,
                     });
                 } else if (progress >= 0.6 && progress <= 0.9) {
@@ -145,12 +145,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
                     gsap.set(heroImg, {
-                        transform: `translate(-50%, -50%) translateZ(${translateZ}px)`,
+                        transform: `translate(0, -50%) translateZ(${translateZ}px)`,
                         opacity,
                     });
                 } else {
                     gsap.set(heroImg, {
-                        transform: "translate(-50%, -50%) translateZ(0px)",
+                        transform: "translate(0, -50%) translateZ(0px)",
                         opacity: 1,
                     });
                 }
